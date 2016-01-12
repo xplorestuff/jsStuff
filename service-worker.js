@@ -1,8 +1,8 @@
 self.addEventListener('fetch', function(event) {
-  event.respondWith(function(event){
+ 
     var fetchRequest = event.request.clone();
 
-        return fetch(fetchRequest).then(
+        event.respondWith( return fetch(fetchRequest).then(
           function(response) {
             // Check if we received a valid response
             if(!response || response.status !== 200 || response.type !== 'basic') {
@@ -21,7 +21,8 @@ self.addEventListener('fetch', function(event) {
             return response;
           }
         );
-  }());
+        );
+
     
   
   
