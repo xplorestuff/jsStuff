@@ -2,7 +2,9 @@ self.addEventListener('fetch', function(event) {
  
     var fetchRequest = event.request.clone();
 
-         event.respondWith(fetch(fetchRequest).then(
+         event.respondWith(fetch(fetchRequest,{  method: 'GET',
+               mode: 'cors',
+               cache: 'default' }).then(
           function(response) {
             // Check if we received a valid response
             if(!response || response.status !== 200 || response.type !== 'basic') {
