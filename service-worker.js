@@ -14,7 +14,7 @@ self.addEventListener('fetch', function(event) {
             // as well as the cache consuming the response, we need
             // to clone it so we have 2 stream.
             var responseToCache = response.clone();
-            console.log("content length for "+fetchRequest.url+" is "+responseToCacheheaders.get('Content-Length'));
+            console.log("content length for "+fetchRequest.url+" is "+responseToCache.get('Content-Length'));
 
           
 
