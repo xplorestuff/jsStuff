@@ -1,7 +1,7 @@
 <html lang="en">
   <head>
   <script>
-var scope = './assets/';
+var scope = '/assets/';
 var registration;
 function register() {
   navigator.serviceWorker.register('service-worker.js', {scope: scope})
@@ -29,13 +29,13 @@ function unregister() {
 
 
 
-    <link rel="stylesheet" href="./assets/main.css">
+    <link rel="stylesheet" href="/assets/main.css">
   </head>
 
   <body>
   
       <div id="request" >
-        <img src="./assets/chrome-touch-icon-192x192.png">
+        <img src="/assets/chrome-touch-icon-192x192.png">
       
         <button onclick="register()">Register</button>
 <button onclick="unregister()">Unregister</button>
