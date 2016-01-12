@@ -1,1 +1,48 @@
-Hello World..
+<html lang="en">
+  <head>
+  <script>
+var scope = 'hello/';
+var registration;
+function register() {
+  navigator.serviceWorker.register('service-worker.js', {scope: scope})
+    .then(function(r) {
+      console.log('registered: ');
+      registration = r;
+      console.log(registration);
+    })
+    .catch(function(whut) {
+      console.error('uh oh... ');
+      console.error(whut);
+    });
+}
+function unregister() {
+  registration.unregister()
+    .then(function() {
+      console.log('unregistered');
+    });
+}
+</script>
+    <meta charset="utf-8">
+  
+
+    <title>Service Worker Sample: Check Response</title>
+
+
+
+    <link rel="stylesheet" href="./main.css">
+  </head>
+
+  <body>
+  
+      <div id="request" >
+        <img src="./chrome-touch-icon-192x192.png">
+      
+        <button onclick="register()">Register</button>
+<button onclick="unregister()">Unregister</button>
+
+    </div>
+
+
+    <!-- Built with love using Web Starter Kit -->
+  </body>
+</html>
