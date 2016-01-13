@@ -78,11 +78,11 @@ self.addEventListener('fetch', function(event) {
           console.log('  Response for %s from network is: %O',
             event.request.url, response);
             var Headers = response.headers;
-            for (var property in Headers.getAll()) {
-    				//if (Headers.hasOwnProperty(property)) {
+            Headers.forEach(function(entry){
+    			if (Headers.hasOwnProperty(property)) {
        				 console.log('[' + property + '] = ' + Headers.get(key));
-    				//}
-				}
+    			}
+			});
            
 
           if (response.status < 400 &&
