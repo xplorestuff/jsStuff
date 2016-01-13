@@ -83,10 +83,7 @@ self.addEventListener('fetch', function(event) {
        				 console.log('[' + entry + ']');
     			//}
 			});
-			for (let item of Headers.keys()) {
-    			console.log(item); // 1, 2, 3
-				}
-           
+			
 
           if (response.status < 400 &&
               response.headers.has('content-type') &&
