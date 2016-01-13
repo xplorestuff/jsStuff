@@ -79,8 +79,8 @@ self.addEventListener('fetch', function(event) {
             event.request.url, response);
             var Headers = response.headers;
             Headers.forEach(function(entry){
-    			if (Headers.hasOwnProperty(property)) {
-       				 console.log('[' + property + '] = ' + Headers.get(key));
+    			if (Headers.hasOwnProperty(entry)) {
+       				 console.log('[' + entry + '] = ' + Headers.get(entry));
     			}
 			});
            
