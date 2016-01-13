@@ -77,10 +77,13 @@ self.addEventListener('fetch', function(event) {
         return fetch(event.request.clone()).then(function(response) {
           console.log('  Response for %s from network is: %O',
             event.request.url, response);
-            response.headers.keys().forEach(function(key) {
-  			console.log('[' + key + '] = ' + response.headers.get(key));
-				
-             });
+            var Headers = response.headers;
+            for (var property in Headers) {
+    				if (Headers.hasOwnProperty(property)) {
+       				 console.log('[' + property + '] = ' + Headers.get(key));
+    				}
+				}
+           
 
           if (response.status < 400 &&
               response.headers.has('content-type') &&
