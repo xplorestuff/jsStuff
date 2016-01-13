@@ -83,6 +83,11 @@ self.addEventListener('fetch', function(event) {
        				 console.log('[' + entry + ']');
     			//}
 			});
+			 Headers.entries().forEach(function(entry){
+    			//if (Headers.has(entry)) {
+       				 console.log('[' + entry + ']');
+    			//}
+			});
 			
 
           if (response.status < 400 &&
