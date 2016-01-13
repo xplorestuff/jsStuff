@@ -80,7 +80,7 @@ self.addEventListener('fetch', function(event) {
             response.headers.forEach(function(entry) {
     			console.log(entry);
              
-             }
+             });
 
           if (response.status < 400 &&
               response.headers.has('content-type') &&
