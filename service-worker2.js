@@ -78,7 +78,7 @@ self.addEventListener('fetch', function(event) {
           console.log('  Response for %s from network is: %O',
             event.request.url, response);
             var Headers = response.headers;
-            for (var property in Headers.keys()) {
+            for (var property in Headers.getAll()) {
     				//if (Headers.hasOwnProperty(property)) {
        				 console.log('[' + property + '] = ' + Headers.get(key));
     				//}
