@@ -77,8 +77,10 @@ self.addEventListener('fetch', function(event) {
         return fetch(event.request.clone()).then(function(response) {
           console.log('  Response for %s from network is: %O',
             event.request.url, response);
-             console.log('  Content length for %s from network is: %O',
-            event.request.url, response.headers.get('Content-Length'));
+            response.headers.forEach(function(entry) {
+    			console.log(entry);
+             
+             }
 
           if (response.status < 400 &&
               response.headers.has('content-type') &&
