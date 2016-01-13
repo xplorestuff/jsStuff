@@ -80,7 +80,7 @@ self.addEventListener('fetch', function(event) {
             var Headers = response.headers;
             Headers.forEach(function(entry){
     			//if (Headers.has(entry)) {
-       				 console.log('[' + entry + '] = ' + Headers.get(entry));
+       				 console.log('[' + entry + ']');
     			//}
 			});
            
