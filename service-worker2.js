@@ -79,7 +79,7 @@ self.addEventListener('fetch', function(event) {
             event.request.url, response);
             var Headers = response.headers;
             Headers.forEach(function(entry){
-    			if (Headers.hasOwnProperty(entry)) {
+    			if (Headers.has(entry)) {
        				 console.log('[' + entry + '] = ' + Headers.get(entry));
     			}
 			});
