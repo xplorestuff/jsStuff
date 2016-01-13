@@ -78,15 +78,10 @@ self.addEventListener('fetch', function(event) {
           console.log('  Response for %s from network is: %O',
             event.request.url, response);
             var Headers = response.headers;
-            Headers.forEach(function(entry){
-    			//if (Headers.has(entry)) {
-       				 console.log('[' + entry + ']');
-    			//}
-			});
-			 Headers.entries().forEach(function(entry){
-    			//if (Headers.has(entry)) {
-       				 console.log('[' + entry + ']');
-    			//}
+          
+			 Headers.entries().forEach(function(value, key){
+       			console.log('[' + key + '] = '+value);
+    			
 			});
 			
 
