@@ -77,9 +77,9 @@ self.addEventListener('fetch', function(event) {
         return fetch(event.request.clone()).then(function(response) {
           console.log('  Response for %s from network is: %O',
             event.request.url, response);
-            response.headers.forEach(function(entry) {
-    			console.log(entry);
-             
+            response.headers.keys().forEach(function(key) {
+  			console.log('[' + key + '] = ' + response.headers.get(key));
+				
              });
 
           if (response.status < 400 &&
