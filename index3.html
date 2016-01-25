@@ -1,0 +1,107 @@
+<!doctype html>
+<!--
+Copyright 2014 Google Inc. All Rights Reserved.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="description" content="Sample of selective caching with service workers.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Service Worker Sample: Selective Caching</title>
+
+    
+ <link rel="stylesheet" href="assets/main.css">
+
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Special+Elite'>
+    <style>
+      .output {
+        font-family: 'Special Elite';
+      }
+    </style>
+    <script>
+var gTop = Number(new Date());
+var gScriptMsg = "";
+function cuz_addHandler(elem, sType, fn, capture) {
+    capture = (capture) ? true : false;
+    if (elem.addEventListener) {
+        elem.addEventListener(sType, fn, capture);
+    }
+    else if (elem.attachEvent) {
+        elem.attachEvent("on" + sType, fn);
+    }
+    else {
+        // Netscape 4
+        if ( elem["on" + sType] ) {
+            // Do nothing - we don't want to overwrite an existing handler.
+        }
+        else {
+            elem["on" + sType] = fn;
+        }
+    }
+}
+function doOnload() {
+	var end = Number(new Date());
+    console.log('page load time: ' + (end - gTop) + ' ms');
+    addScript('http://1.cuzillion.com/bin/resource.cgi?type=js&sleep=5&n=5&t=1453714296');
+	
+}
+cuz_addHandler(window, 'load', doOnload);
+
+function addStylesheet(url) {
+	var stylesheet = document.createElement('link');
+	stylesheet.rel = 'stylesheet';
+	stylesheet.type = 'text/css';
+	stylesheet.href =  url;
+	document.getElementsByTagName('head')[0].appendChild(stylesheet);
+}
+function addScript(url) {
+	var script = document.createElement('script');
+	script.src = url;
+	document.getElementsByTagName('head')[0].appendChild(script);
+}
+function scriptSleepOnload(sUrl) {
+	var now = Number(new Date());
+	var msg = "<nobr>" + (now - gTop) + "ms: \"" + sUrl + "\" done</nobr>\n";
+	if ( document.getElementById('loadedscripts') ) {
+		document.getElementById('loadedscripts').innerHTML += msg;
+	}
+	else {
+		gScriptMsg += msg;
+	}
+}
+function testLoaded(){
+if (typeof externalFunction1 === 'function') 
+	console.log('fun available '+ externalFunction1(1));
+
+else
+	console.log('fun not available ');
+
+}
+</script>
+  
+  </head>
+
+  <body>
+    <h1>Test JS defer load</h1>
+
+  
+
+    <div class="output">
+     <button onclick="testLoaded()">Click me</button>
+    </div>
+    
+  </body>
+</html>
